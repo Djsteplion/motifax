@@ -67,23 +67,23 @@ export default function Scanner() {
       {messages.filter(m => m.role === 'assistant').map((m) => (
         <div key={m.id} className="mt-8 p-8 bg-white border border-gray-200 rounded-3xl text-left shadow-xl animate-in fade-in slide-in-from-bottom-4">
           <div className="flex items-center justify-between mb-6 border-b border-gray-100 pb-4">
-             <h4 className="text-xs font-black uppercase tracking-[0.2em] text-black">Motifax Analysis Report</h4>
-             <span className="text-[10px] bg-gray-100 px-2 py-1 rounded font-mono text-gray-500">v1.0.4</span>
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-black">Motifax Analysis Report</h4>
+            <span className="text-[10px] bg-gray-100 px-2 py-1 rounded font-mono text-gray-500">v1.0.4</span>
           </div>
 
-          {/* The Content with specialized styling for the numbered sections */}
           <div className="text-gray-800 leading-relaxed space-y-4">
-            {m.parts.map((part, index) => {
-              if (part.type === 'text') {
-                return (
-                  <div key={index} className="prose-sm prose-headings:text-black prose-strong:text-black prose-strong:font-bold">
-                    {/* We use a span here to keep the streaming fluid */}
-                    <span className="block whitespace-pre-wrap">{part.text}</span>
-                  </div>
-                )
-              }
-              return null;
-            })}
+            <div className="prose-sm prose-headings:text-black prose-strong:text-black prose-strong:font-bold">
+              {/* SAFELY MAPS OVER PARTS AND CONCATENATES TEXT */}
+              <span className="block whitespace-pre-wrap">
+                {m.parts
+                  ? m.parts
+                      .filter(part => part.type === 'text')
+                      .map(part => part.text)
+                      .join('')
+                  : '' // Fallback if parts is somehow undefined
+                }
+              </span>
+            </div>
           </div>
         </div>
       ))}
