@@ -1,3 +1,4 @@
+/*
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { streamText, convertToModelMessages } from 'ai';
 export const runtime = 'edge';
@@ -33,3 +34,5 @@ export async function POST(req: Request) {
     },
   });
 }
+
+*/

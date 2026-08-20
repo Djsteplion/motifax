@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Providers } from "./providers";
 import "./globals.css";
+import MfButton from "@/components/MfButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +16,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Motifax | AI Motif Identifier & Design DNA Analysis",
+   icons: {
+    icon: "/favicon.png",
+  },
   description: "Upload any image to identify textile patterns, architectural motifs, and design history instantly. The professional tool for curators and designers.",
   keywords: [
     "AI Motif Identifier", 
@@ -48,20 +53,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
-        {children}
+        <Providers>
+         {children}
+        </Providers>
 
         {/* The "Mf" Floating Badge */}
-        <div className="fixed bottom-6 left-6 z-[9999] pointer-events-auto">
-          <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform cursor-pointer group">
+       <div className="fixed bottom-6 left-6 z-9999 pointer-events-auto">
+         <MfButton />
+          {/* <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg border border-white/20 hover:scale-110 transition-transform cursor-pointer group">
             <span className="text-sm font-bold tracking-tighter italic select-none">
               Mf
             </span>
             
-            {/* Tooltip that appears on hover */}
+            /* Tooltip that appears on hover 
             <div className="absolute left-12 px-2 py-1 bg-black text-[10px] text-white rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase pointer-events-none">
               Motifax Engine
             </div>
-          </div>
+          </div>*/}
         </div>
       </body>
     </html>
