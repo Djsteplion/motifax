@@ -32,13 +32,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Motifax AI",
-    description: "The world's first Design DNA Identifier.",
+    description: "AI-POWERED MOTIF ANALYSIS.",
   },
   // This points to the dynamic image we just created
   openGraph: {
     title: "Motifax | AI Design DNA Decoder",
     description: "Identify any motif instantly with professional AI analysis.",
-    url: "https://motifax.ai", // Replace with your Netlify URL
+    url: "https://motifax.netlify.app/", // Replace with your Netlify URL
     siteName: "Motifax",
     locale: "en_US",
     type: "website",
